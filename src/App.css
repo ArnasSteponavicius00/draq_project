@@ -1,15 +1,28 @@
-.login{
-  text-align: center;
-}
-
 .navBar{
-  background: -webkit-linear-gradient(right,#02FE00,rgb(0, 42, 255));
+  background:#0E0B16;
 }
 
 .webName{
-  color: rgb(0, 255, 0);
+  color: rgb(5, 233, 24);
 }
 
 .navPages{
+  color: white;
+  margin-left: 4em;
+}
+
+.logout{
+  color: white;
+  background: #4717F6;
+  border: 2px solid #4717F6;
+  border-radius: 10px;
+}
+
+h1{
+  color: white;
+  align-content: center;
+}
+
+h5{
   color: white;
 }
