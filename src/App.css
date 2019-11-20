@@ -35,6 +35,10 @@ h5{
   text-align: center;
 }
 
+.live-games-score{
+  right: 2rem;
+}
+
 .league-teams-header{
   text-align: center;
 }

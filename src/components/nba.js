@@ -38,20 +38,22 @@ class NBA extends React.Component{
     render(){
         const games = this.state.games.map((games, key)=>{
             return <div key={key}>
-            <Card style={{width: '20rem', alignItems:'center', margin:'20px'}} 
-                            border="success" bg="dark" className="text-center">
-            <p>{games.home_team_score} - {games.visitor_team_score}</p>
-            
-            <p>{games.home_team.full_name} vs. {games.visitor_team.full_name}</p>
+            <Card style={{margin: '0px 40px 20px 10px', alignItems:'center'}} 
+                            border="success" bg="dark">
+            <p> - </p>
+            <p>{games.home_team.full_name} | {games.home_team_score} vs  {games.visitor_team_score} | {games.visitor_team.full_name}</p>
+            <p> - </p>
             </Card>
             </div>
         });
 
         const teams = this.state.teams.map((teams, key)=>{
             return <div key={key}>
-            <Card style={{width: '20rem', alignItems:'center', margin:'20px'}} 
+            <Card style={{width: '20rem', alignItems:'center', margin: '0px 40px 10px 10px'}} 
                             border="danger" bg="dark" className="text-center">
+            <p> - </p>
             <p>{teams.id} - {teams.abbreviation} - {teams.full_name} - {teams.division}</p>
+            <p> - </p>
             </Card>
             </div>
         });
@@ -62,8 +64,9 @@ class NBA extends React.Component{
                     <Row>
                         <Col>
                             <h2 className="live-games-header">Live Games</h2>
-                            <Card style={{width: '30rem', alignItems:'center', margin:'20px'}} 
-                            border="success" bg="dark" className="text-center">
+                            <Card style={{margin:'20px', alignItems: 'center'}}
+                                            border="success" bg="dark">
+                                <h3>Home - Away</h3>
                                 <div>
                                     <ul>
                                         {games}
@@ -74,7 +77,8 @@ class NBA extends React.Component{
                         <Col>
                             <h2 className="league-teams-header">League Teams</h2>
                             <Card style={{width: '30rem', alignItems:'center', margin:'20px'}} 
-                            border="danger" bg="dark" className="text-center">
+                                            border="danger" bg="dark" className="text-center">
+                                <h4>Id-Abb-Team Name-Div</h4>
                                 <div>
                                     <ul>
                                         {teams}
