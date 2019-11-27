@@ -1,0 +1,96 @@
+//References: https://www.youtube.com/channel/UCK8YsKv4-N6ItZfzEyKlI6A
+
+const express = require('express');
+const cors = require('cors');
+const users = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+const UserModel = require('../models/User');
+users.use(cors())
+
+process.env.SECRET_KEY = 'secret';
+
+users.post('/register', (req, res) => {
+    const userData = {
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    }
+
+    //Check if user is already registered
+    //If User is not registered encrypt password using bcrypt
+    UserModel.findOne({
+        email: req.body.email
+    })
+    .then(user => {
+        if(!user){
+            bcrypt.hash(req.body.password, 10, (err, hash) => {
+                userData.password = hash
+                UserModel.create(userData)
+            })
+            .then(user => {
+                res.json({status: user.email + ' has been registered'});
+            })
+            .catch(err => {
+                res.send(err);
+            })
+        }else{
+            res.json({error: 'User already exists'})
+        }
+    })
+    .catch(err => {
+        res.send(err);
+    })
+})
+
+users.post('/login', (req, res) => {
+    UserModel.findOne({
+        email: req.body.email
+    })
+    .then(user => {
+        if(user){
+            //using the compareSync function from bcrypt
+            //compare entered password with the password from the db
+            //by using the payload from JWT
+            if(bcrypt.compareSync(req.body.password, user.password)){
+                const payload = {
+                    _id: user.id,
+                    username: user.username,
+                    email: user.email
+                }
+                let token = jwt.sign(payload, process.env.SECRET_KEY, {
+                    expiresIn: 1440
+                })
+                res.send(token)
+            }else{
+                res.json({error: "Invalid login details"})
+            }
+        }else{
+            res.send({error: 'Invalid login details'})
+        }
+    })
+    .catch(err => {
+        res.send(err);
+    })
+})
+
+users.get('/settings', (req, res) => {
+    var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+
+    UserModel.findOne({
+        _id: decoded.id
+    })
+    .then(user => {
+        if(user){
+            res.json(user)
+        }else{
+            res.send("User does not exist")
+        }
+    })
+    .catch(err => {
+        res.send(err)
+    })
+})
+
+module.exports = users;

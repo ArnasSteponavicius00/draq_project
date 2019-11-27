@@ -9,6 +9,7 @@ import Container from 'react-bootstrap/Container';
 class NBA extends React.Component{
     constructor(props){
         super(props);
+        
         this.state = {
             games: [],
             teams: []

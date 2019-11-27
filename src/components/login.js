@@ -2,38 +2,17 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import {Switch, Route, BrowserRouter} from 'react-router-dom';
 
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 
 class Login extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            email:'',
-            password:''
-        };
-
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onChange = this.onChange.bind(this);
-    }
-
-    onSubmit(e){
-        e.preventDefault();
-    }
-
-    onChange(e){
-        this.setState({[e.target.name]: e.target.value});
-    }
-
     render(){
-
-        const {email, password} = this.state;
-
         return(
+            <BrowserRouter>
             <div className="justify-content-center">
                 <Container>
                     <Row className="justify-content-md-center">
@@ -68,6 +47,10 @@ class Login extends React.Component{
                     </Row>
                 </Container>
             </div>
+            <Switch>
+                <Route path="/register" component={Register}/>
+            </Switch>
+            </BrowserRouter>
         );
     }
 }
