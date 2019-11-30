@@ -14,12 +14,17 @@ class Settings extends React.Component {
 
     componentDidMount(){
         const token = localStorage.usertoken;
-        const decoded = jwt_decode(token);
-        this.setState({
-            username: decoded.username,
-            email: decoded.email,
-            password: decoded.password
-        });
+        if(!token){
+            window.location = '/login';
+            console.log('Invalid login');
+        }else{
+            const decoded = jwt_decode(token);
+            this.setState({
+                username: decoded.username,
+                email: decoded.email,
+                password: decoded.password
+            });
+        }
     }
 
     render(){

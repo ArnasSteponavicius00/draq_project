@@ -9,16 +9,25 @@ import axios from 'axios';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
+//
+// post the payload of newUser details to the server
+// check to see if details are valid, if null alert to invalid input
+// else redirect to login page if input is valid
+//
 const register = newUser => {
     return axios.post('http://localhost:4000/users/register', {
         username: newUser.username,
         email: newUser.email,
         password: newUser.password
     })
-    .then(res => {
-        alert('Registered Successfully')
-        console.log('Registered');
+    .then(response => {
+        if(!newUser.username || !newUser.email || !newUser.password){
+            alert('Invalid or Empty input(s)');
+            console.log('Invalid Parameters');
+        }else{
+            console.log('New user registered!');
+            window.location = '/login';
+        }
     });
 }
 
@@ -63,11 +72,13 @@ class Register extends React.Component{
             password: this.state.password
         }
 
-        register(newUser).then(res => {
-            if(res) {
-                this.props.history.push('/login')
+        //call register and pass in the newUser object above
+        register(newUser)
+            .then(response => {
+                if(response) {
+                    console.log('User Registered');
             }
-        })
+        });
     }
 
     render(){

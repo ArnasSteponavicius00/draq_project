@@ -15,17 +15,17 @@ import Settings from './components/settings';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 class App extends React.Component{
-
+  //remove usertoken from localStorage and push user to login page.
   logOut(e){
     e.preventDefault();
     localStorage.removeItem('usertoken')
+    window.location = '/login'
   }
 
   render(){
-
-    //NavBar for when there is no token in localStorage so it displays login and register buttons
+    //NavBar for when there is no token in localStorage
+    //displays login and register buttons
     const loginRegUser = (
       <BrowserRouter>
         <NavBar className="navBar">
@@ -52,9 +52,10 @@ class App extends React.Component{
           <Route path="/register" component={Register}/>
         </Switch>
       </BrowserRouter>
-    )
+    );
 
-    //NavBar for when there is a token in localStorage so it displays settings and logout buttons
+    //NavBar for when there is a token in localStorage
+    //displays settings and logout buttons
     const loggedInUser = (
       <BrowserRouter>
         <NavBar className="navBar">
@@ -68,7 +69,7 @@ class App extends React.Component{
             </Nav>  
             <Nav style={{margin: '10px'}}>
               <Link to="/settings"><Button style={{background:'#4717F6'}}><h5>Settings</h5></Button></Link>
-              <a href="" onClick={this.logOut.bind(this)}><Button style={{background:'#4717F6', margin:'0px 0px 0px 10px'}}><h5>Logout</h5></Button></a>
+              <a href="/#" onClick={this.logOut.bind(this)}><Button style={{background:'#4717F6', margin:'0px 0px 0px 10px'}}><h5>Logout</h5></Button></a>
             </Nav>
           </Container>
         </NavBar>
@@ -81,12 +82,10 @@ class App extends React.Component{
           <Route path="/settings" component={Settings}/>
         </Switch>
       </BrowserRouter>
-    )
-    
-    /*
-      If a token exists, use the loggedInUser group
-      else use the loginRegUser group
-    */
+    );
+     
+    //If a token exists, use the loggedInUser group
+    //else use the loginRegUser group   
     return(
       <div>
         {localStorage.usertoken ? loggedInUser : loginRegUser}

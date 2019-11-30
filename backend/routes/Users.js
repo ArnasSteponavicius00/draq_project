@@ -60,7 +60,7 @@ users.post('/login', (req, res) => {
     .then(user => {
         if(user){
             //using the compareSync function from bcrypt
-            //compare entered password with the password from the db
+            //compare entered password with the password from the database
             //by using the payload from JWT
             if(bcrypt.compareSync(req.body.password, user.password)){
                 const payload = {

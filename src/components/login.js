@@ -8,17 +8,27 @@ import axios from 'axios';
 
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+//
+//method that accepts a user object and posts to server
+//if the response has an error as the data object, show error
+//else if the response is populated with matching user details 
+//create a token for the session
+//
 const login = user => {
     return axios.post('http://localhost:4000/users/login', {
         username: user.username,
         email: user.email,
         password: user.password
     })
-    .then(res => {
-        localStorage.setItem('usertoken' , res.data);
-        return res.data;
+    .then(response => {
+        //DEBUG
+        //console.log(response);
+        if(response.data.error){
+            alert('Invalid email or password');
+        }else if(response.data){
+            localStorage.setItem('usertoken' , response.data);
+            return response.data;
+        }
     })
     .catch(error => {
         console.log(error);
@@ -39,30 +49,37 @@ class Login extends React.Component{
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    //handle input of the email box
     onChangeEmail(e){
         this.setState({
             email: e.target.value
         });
     }
+    //handle input of the password box
     onChangePassword(e){
         this.setState({
             password: e.target.value
         });
     }
 
+    //when button is pressed, set the state of user details
+    //pass them into login and redirect to the homepage or display an error
     onSubmit(e){
         e.preventDefault();
 
+        //object to pass into login method
         const User = {
             email: this.state.email,
             password: this.state.password
         }
-
-        login(User).then(res => {
-            if(res) {
-                this.props.history.push('/home')
+        //pass in user object to login and if the response
+        //passes validation in method, push user to home page
+        login(User).then(response => {
+            if(response) {
+                window.location = '/home';
             }
         })
+        .catch(error => console.log(error));
     }
 
     render(){

@@ -9,6 +9,6 @@ const UserSchema = new Schema({
 })
 
 // create a user model
-var UserModel = mongoose.model('user', UserSchema);
+var UserModel = mongoose.model('users', UserSchema);
 
 module.exports = UserModel;
