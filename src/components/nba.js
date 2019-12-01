@@ -17,6 +17,7 @@ class NBA extends React.Component{
         };
     }
 
+    //get two different apis when page is loaded
     componentDidMount(){
         axios.get('https://www.balldontlie.io/api/v1/games')
         .then(response => {
@@ -38,6 +39,8 @@ class NBA extends React.Component{
     }
 
     render(){
+        //map returned json data to a map, as the json data is stored in an array
+        //display data returned in a table
         const games = this.state.games.map((games, key)=>{
             return <div key={key}>
             <Table striped bordered hover variant="dark"
@@ -62,6 +65,8 @@ class NBA extends React.Component{
             </div>
         });
 
+        //map returned json data to a map, as the json data is stored in an array
+        //display data returned as a card
         const teams = this.state.teams.map((teams, key)=>{
             return <div key={key}>
             <Card style={{width: '20rem', alignItems:'center', margin: '0px 40px 10px 10px'}} 
@@ -73,6 +78,7 @@ class NBA extends React.Component{
             </div>
         });
 
+        //display the data from the api on the page when component is loaded
         return(
             <div>
             <Container>

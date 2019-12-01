@@ -10,12 +10,14 @@ class Football extends React.Component{
     constructor(props){
         super(props);
         
+        //store api data
         this.state = {
             events: [],
             teams: []
         };
     }
 
+    //get two different apis when page is loaded
     componentDidMount(){
         axios.get('https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=4328')
         .then(response => {
@@ -37,6 +39,7 @@ class Football extends React.Component{
     }
 
     render(){
+        //map the array data of the json data to a key and display them in a table
         const events = this.state.events.map((events, key)=>{
             return <div key={key}>
                 <Table striped bordered hover variant="dark"
@@ -61,6 +64,7 @@ class Football extends React.Component{
             </div>
         });
 
+        //map the array data of the json data to a key and display them in a card
         const teams = this.state.teams.map((teams, key)=>{
             return <div key={key}>
             <Card style={{width: '20rem', alignItems:'center', margin: '10px 40px 10px 10px'}} 
@@ -72,6 +76,7 @@ class Football extends React.Component{
             </div>
         });
 
+        //display the json data from above when page is loaded
         return(
             <div>
                 <Container>

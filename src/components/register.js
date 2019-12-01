@@ -60,6 +60,10 @@ class Register extends React.Component{
         });
     }
 
+    //When button is clicked
+    //set the current state of entered details to newUser
+    //pass newUser into register as an object
+    //post details to database
     onSubmit(e){
         e.preventDefault();
 
