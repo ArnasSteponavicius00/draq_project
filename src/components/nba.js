@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import Table from 'react-bootstrap/Table';
 
 
 class NBA extends React.Component{
@@ -39,57 +40,65 @@ class NBA extends React.Component{
     render(){
         const games = this.state.games.map((games, key)=>{
             return <div key={key}>
-            <Card style={{margin: '0px 40px 20px 10px', alignItems:'center'}} 
-                            border="success" bg="dark">
-            <p> - </p>
-            <p>{games.home_team.full_name} | {games.home_team_score} vs  {games.visitor_team_score} | {games.visitor_team.full_name}</p>
-            <p> - </p>
-            </Card>
+            <Table striped bordered hover variant="dark"
+                style={{width: '40rem', alignItems:'center', margin:'20px'}}>
+                    <thead>
+                        <tr>
+                            <th>Home</th>
+                            <th>Score H</th>
+                            <th>Score A</th>
+                            <th>Away</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{games.home_team.full_name}</th>
+                            <td>{games.home_team_score}</td>
+                            <td>{games.visitor_team_score}</td>
+                            <td>{games.visitor_team.full_name}</td>
+                        </tr>
+                        </tbody>
+                </Table>
             </div>
         });
 
         const teams = this.state.teams.map((teams, key)=>{
             return <div key={key}>
             <Card style={{width: '20rem', alignItems:'center', margin: '0px 40px 10px 10px'}} 
-                            border="danger" bg="dark" className="text-center">
+                            border="success" bg="dark" className="text-center">
             <p> - </p>
-            <p>{teams.id} - {teams.abbreviation} - {teams.full_name} - {teams.division}</p>
-            <p> - </p>
+            <p>{teams.abbreviation} - {teams.full_name}</p>
+            <p>Division: {teams.division}</p>
             </Card>
             </div>
         });
 
         return(
-            <div className="liveGames">
-                <Container>
-                    <Row>
-                        <Col>
-                            <h2 className="live-games-header">Live Games</h2>
-                            <Card style={{margin:'20px', alignItems: 'center'}}
-                                            border="success" bg="dark">
-                                <h3>Home - Away</h3>
-                                <div>
-                                    <ul>
-                                        {games}
-                                    </ul>
-                                </div>
+            <div>
+            <Container>
+                <Row>
+                    <Col>
+                        <div className="events">
+                            <Card style={{width: '19.5rem', alignItems:'center', margin: '10px 40px 10px 175px'}} 
+                                border="success" bg="dark" className="text-center">
+                                <h2>Upcoming Games</h2>
                             </Card>
-                        </Col>
-                        <Col>
-                            <h2 className="league-teams-header">League Teams</h2>
-                            <Card style={{width: '30rem', alignItems:'center', margin:'20px'}} 
-                                            border="danger" bg="dark" className="text-center">
-                                <h4>Id-Abb-Team Name-Div</h4>
-                                <div>
-                                    <ul>
-                                        {teams}
-                                    </ul>
-                                </div>
+                            {games}
+                        </div>
+                    
+                    </Col>
+                    <Col>
+                        <div className="teams">
+                        <Card style={{width: '18rem', alignItems:'center', margin: '10px 40px 10px 25px'}} 
+                                border="success" bg="dark" className="text-center">
+                                <h2>League Teams</h2>
                             </Card>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+                            {teams}
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
         );
     }
 }
