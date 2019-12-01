@@ -29,9 +29,9 @@ class Settings extends React.Component {
 
     render(){
         return(
-            <div className="App">
+            <div className="settings-comp">
                 <h2>Profile Settings:</h2>
-                <Table striped bordered hover variant="dark">
+                <Table striped bordered hover variant="dark" style={{width: '15rem', alignItems:'center'}}>
                     <tbody>
                         <tr>
                             <td>Username:</td>
@@ -40,6 +40,10 @@ class Settings extends React.Component {
                         <tr>
                             <td>Email:</td>
                             <td>{this.state.email}</td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td>{this.state.password}</td>
                         </tr>
                     </tbody>
                 </Table>

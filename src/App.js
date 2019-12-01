@@ -8,7 +8,6 @@ import Home from './components/home';
 import Login from './components/login';
 import NBA from './components/nba';
 import Football from './components/football';
-import Cricket from './components/cricket';
 import Register from './components/register';
 import Settings from './components/settings';
 
@@ -35,7 +34,6 @@ class App extends React.Component{
                <Nav.Link href="/home"><h5 className="navPages">Home</h5></Nav.Link>
                <Nav.Link href="/nba"><h5 className="navPages">NBA</h5></Nav.Link>
                <Nav.Link href="/football"><h5 className="navPages">Football</h5></Nav.Link>
-               <Nav.Link href="/cricket"><h5 className="navPages">Cricket</h5></Nav.Link>
             </Nav>  
             <Nav style={{margin:'10px'}}>
               <Link to="/login"><Button style={{background:'#4717F6', margin:'0px 0px 0px 10px'}}><h5>Log In</h5></Button></Link>
@@ -48,7 +46,6 @@ class App extends React.Component{
           <Route path="/login" component={Login}/>
           <Route path="/football" component={Football}/>
           <Route path="/nba" component={NBA}/>
-          <Route path="/cricket" component={Cricket}/>
           <Route path="/register" component={Register}/>
         </Switch>
       </BrowserRouter>
@@ -65,7 +62,6 @@ class App extends React.Component{
                <Nav.Link href="/"><h5 className="navPages">Home</h5></Nav.Link>
                <Nav.Link href="/nba"><h5 className="navPages">NBA</h5></Nav.Link>
                <Nav.Link href="/football"><h5 className="navPages">Football</h5></Nav.Link>
-               <Nav.Link href="/cricket"><h5 className="navPages">Cricket</h5></Nav.Link>
             </Nav>  
             <Nav style={{margin: '10px'}}>
               <Link to="/settings"><Button style={{background:'#4717F6'}}><h5>Settings</h5></Button></Link>
@@ -78,7 +74,6 @@ class App extends React.Component{
           <Route path="/login" component={Login}/>
           <Route path="/football" component={Football}/>
           <Route path="/nba" component={NBA}/>
-          <Route path="/cricket" component={Cricket}/>
           <Route path="/settings" component={Settings}/>
         </Switch>
       </BrowserRouter>

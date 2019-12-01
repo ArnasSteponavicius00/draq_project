@@ -27,6 +27,7 @@ h5{
   color: white;
 }
 
+/*CSS for NBA component*/
 .liveGames{
   color: white;
 }
@@ -41,4 +42,22 @@ h5{
 
 .league-teams-header{
   text-align: center;
+}
+
+/*CSS for Football component*/
+.events{
+  text-align: center;
+  color: white;
+}
+
+.teams{
+  color: white;
+}
+
+
+/*CSS for setting component */ 
+.settings-comp{
+  text-align: left;
+  color: white;
+  margin: 20px 0px 0px 50px;
 }

@@ -21,6 +21,8 @@ users.use(function (req, res, next) {
 process.env.SECRET_KEY = 'secret';
 
 users.post('/register', (req, res) => {
+    console.log(req.body);
+
     const userData = {
         username: req.body.username,
         email: req.body.email,
