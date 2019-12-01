@@ -24,6 +24,7 @@ Navigate into the folder and run the following command:
 
 # References: 
 
+>Postman for debugging the backend: https://www.getpostman.com/
 >MoreCodes on YouTube: https://www.youtube.com/channel/UCK8YsKv4-N6ItZfzEyKlI6A
 >mkenirons: https://github.com/MERN-Application
 >TraversyMedia on YouTube: https://www.youtube.com/watch?v=USaB1adUHM0
