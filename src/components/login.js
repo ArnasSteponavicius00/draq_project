@@ -6,8 +6,6 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import axios from 'axios';
 
-import '../App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 //
 //method that accepts a user object and posts to server
 //if the response has an error as the data object, show error
@@ -76,7 +74,7 @@ class Login extends React.Component{
         //passes validation in method, push user to home page
         login(User).then(response => {
             if(response) {
-                window.location = '/home';
+                window.location = '/';
             }
         })
         .catch(error => console.log(error));

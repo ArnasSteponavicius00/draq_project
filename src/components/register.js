@@ -6,9 +6,6 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import axios from 'axios';
 
-import '../App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 //
 // post the payload of newUser details to the server
 // check to see if details are valid, if null alert to invalid input

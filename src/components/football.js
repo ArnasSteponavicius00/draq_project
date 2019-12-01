@@ -6,8 +6,6 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 
-import '../App.css';
-
 class Football extends React.Component{
     constructor(props){
         super(props);

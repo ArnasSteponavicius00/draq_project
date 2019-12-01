@@ -1,3 +1,4 @@
+/*App.js*/
 .navBar{
   background:#0E0B16;
 }
@@ -11,13 +12,6 @@
   margin-left: 4em;
 }
 
-.logout{
-  color: white;
-  background: #4717F6;
-  border: 2px solid #4717F6;
-  border-radius: 10px;
-}
-
 h1{
   color: white;
   align-content: center;
@@ -27,24 +21,19 @@ h5{
   color: white;
 }
 
-/*CSS for NBA component*/
-.liveGames{
+p{
+  font-size: large;
+}
+
+/*Logout button*/
+.logout{
   color: white;
+  background: #4717F6;
+  border: 2px solid #4717F6;
+  border-radius: 10px;
 }
 
-.live-games-header{
-  text-align: center;
-}
-
-.live-games-score{
-  right: 2rem;
-}
-
-.league-teams-header{
-  text-align: center;
-}
-
-/*CSS for Football component*/
+/*Football component*/
 .events{
   text-align: center;
   color: white;
@@ -54,10 +43,15 @@ h5{
   color: white;
 }
 
-
-/*CSS for setting component */ 
+/*settings component */ 
 .settings-comp{
   text-align: left;
   color: white;
   margin: 20px;
+}
+
+/*welcome component*/
+.welcome-comp{
+  color: white;
+  text-align: center;
 }
